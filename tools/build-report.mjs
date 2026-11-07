@@ -4,7 +4,7 @@ import path from 'node:path';
 import { chromium } from 'playwright-core';
 import {
   Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, ImageRun, WidthType, AlignmentType, BorderStyle,
-  PageBreak, Footer, PageNumber, VerticalAlign, ShadingType,
+  PageBreak, Footer, PageNumber, VerticalAlign, ShadingType, HeadingLevel, TableLayoutType,
 } from 'docx';
 
 const ROOT = path.resolve('..');
@@ -37,7 +37,7 @@ const snip = (file, from, to) => {
 B.push({ k: 'title' });
 
 // ── Перечень работ ──────────────────────────────────────────────────────────
-H('Перечень работ, выполненных в ходе учебной практики');
+B.push({ k: 'h0', t: 'Перечень работ, выполненных в ходе учебной практики' });
 P('Практика выполнена индивидуально студентом Сидоровым Егором Денисовичем (группа 4ИСИП-723) по варианту №6 «Мероприятия». Разработана веб-платформа «ОРБИТА» для поиска мероприятий и регистрации на них. Обязательное правило темы — число активных регистраций не превышает лимит участников — реализовано в серверной транзакции, в триггерах базы данных и в уникальном индексе. Приложение написано на Node.js 24 со встроенной СУБД SQLite без сторонних зависимостей. Исходный код, миграции, данные и материалы проверок находятся в папке «Сидоров_УП09_Мероприятия» (структура 01_Проект … 07_Документы по маршруту выполнения).');
 P('Все приведённые результаты (тесты, замеры, снимки экранов) получены на реально работающем приложении 07.11.2026. Действия, которые не выполнялись, отмечены в тексте как не выполненные.');
 TBL('Состав работ по теме «Мероприятия» (занятия практики, 36 академических часов)', ['Тема отчёта', 'Занятия', 'Основные материалы'], [
@@ -83,7 +83,7 @@ TBL('Пользовательские сценарии', ['№', 'Исходно
 H('4. Принять решение по этической ситуации');
 P('Ситуация: участник проекта предлагает вознаграждение за изменение учебного результата и исключение найденной ошибки из протокола проверки. Решение: отказаться, результат и протокол не менять. Порядок действий: письменно отказаться; сохранить исходный протокол и историю изменений в репозитории как подтверждение достоверности; сообщить руководителю практики и действовать по правилам колледжа об академической честности; исправить ошибку и пройти повторную проверку; указать авторство (чужие фрагменты — со ссылкой на источник). Обоснование: изменение результата — фальсификация; для платформы с правилом лимита журнал дефектов и протоколы доказывают, что защита работает. Полный текст — в файле «Личный_план_бюджет_этика_источники».');
 H('5. Составить личный план, условный бюджет и перечень источников');
-P('Сравнение вариантов поддержки проекта при стоимости часа 500 руб.: вариант А — 0 × 12 + 24 × 500 = 12 000 руб. в год; вариант Б — 300 × 12 + 6 × 500 = 6 600 руб. в год. Выбран вариант Б: он дешевле на 5 400 руб., а денежная часть 3 600 руб. покрывается остатком условного годового бюджета 12 000 руб. (доход 540 000 − расходы 528 000). План, расчёт и источники приведены в приложении Г.');
+P('Сравнение вариантов поддержки проекта при стоимости часа 500 руб.: вариант А — 0 × 12 + 24 × 500 = 12 000 руб. в год; вариант Б — 300 × 12 + 6 × 500 = 6 600 руб. в год. Выбран вариант Б: он дешевле на 5 400 руб., а денежная часть 3 600 руб. покрывается остатком условного годового бюджета 12 000 руб. (доход 540 000 − расходы 528 000). План, расчёт и источники приведены в файле «Личный_план_бюджет_этика_источники» (папка 07_Документы).');
 H('6. Спроектировать карту страниц и прототипы');
 P('Карта включает 12 групп страниц: главная, каталог, мероприятие, категории и категория, о платформе, контакты, вход и регистрация, кабинет, мои регистрации, панель организатора, создание и редактирование, участники и администрирование. Доступ проверяется сервером (таблица {{T:Карта страниц}}). Прототипы списка, карточки, формы и входа с состояниями «пустой список», «ошибка ввода», «нет записи» — в файле «Прототипы» (листинг {{L:схема прототипа}}).');
 TBL('Карта страниц и доступ (фрагмент; полная матрица — в «Карта_страниц.md»)', ['Страница', 'Адрес', 'Кто имеет доступ'], [
@@ -319,7 +319,7 @@ TBL('Состав комплекта сдачи', ['Папка', 'Состав']
 P('Вывод: выполнены замеры и статистика, применены три меры оптимизации (измеримый эффект — по размеру ответа и числу запросов), проверено SEO, создана копия и проверено восстановление. Не выполнены: публикация анонса, проверка с другого рабочего места и запуск проекта другим студентом.');
 
 // ── Заключение ──────────────────────────────────────────────────────────────
-H('Заключение');
+TOPIC('Заключение.');
 P('В ходе практики разработана платформа «ОРБИТА»: каталог мероприятий, регистрация с гарантированным лимитом участников, личный кабинет, панель организатора, роли и защита данных. Получены и проверены результаты, приведённые в таблице {{T:Выполнение требований}}.');
 TBL('Выполнение требований по теме «Мероприятия»', ['Код', 'Требование', 'Статус', 'Доказательство'], [
   ['ФТ-01', 'Каталог, поиск, фильтры, сортировка, страницы', 'Выполнено', 'Тесты C1–C8, рисунки каталога'],
@@ -334,28 +334,16 @@ TBL('Выполнение требований по теме «Мероприя�
 ], [8, 40, 16, 36]);
 P('Ограничения и план доработки: хранить счётчик занятых мест в таблице событий для ускорения сортировки; добавить лист ожидания и письма-подтверждения; настроить HTTPS при размещении; выполнить публикацию анонса и проверку запуска другим пользователем; провести проверку в других браузерах.');
 
-H('Список использованных источников');
-['Node.js Documentation: SQLite (node:sqlite). URL: https://nodejs.org/docs/latest/api/sqlite.html (на английском языке)',
-  'Node.js Documentation: Crypto (scrypt, timingSafeEqual). URL: https://nodejs.org/docs/latest/api/crypto.html (на английском языке)',
-  'SQLite Documentation: CREATE TRIGGER. URL: https://www.sqlite.org/lang_createtrigger.html (на английском языке)',
-  'SQLite Documentation: Partial Indexes. URL: https://www.sqlite.org/partialindex.html (на английском языке)',
-  'MDN Web Docs: HTTP-куки. URL: https://developer.mozilla.org/ru/docs/Web/HTTP/Guides/Cookies (на русском языке)',
-  'MDN Web Docs: Content-Security-Policy. URL: https://developer.mozilla.org/ru/docs/Web/HTTP/Guides/CSP (на русском языке)',
-  'Unsplash License. URL: https://unsplash.com/license (источник фотографий; на английском языке)',
-].forEach((s, i) => P(`${i + 1}. ${s}`, { noindent: true }));
-P('Даты обращения к страницам документации заполняются студентом по фактическому чтению.', { noindent: true });
-
-H('Приложения к отчёту');
-TBL('Перечень приложений и расположение материалов', ['Обозначение', 'Наименование', 'Файл или ссылка'], [
-  ['А', 'Техническое задание версии 1', '03_Проектирование/ТЗ_версия_1.md'],
-  ['Б', 'Схема БД, миграции, учебные данные, резервная копия', '02_Данные/'],
-  ['В', 'Карта страниц и прототипы', '03_Проектирование/Карта_страниц.md, Прототипы.md'],
-  ['Г', 'Личный план, бюджет, этическая ситуация, источники', '07_Документы/Личный_план_бюджет_этика_источники.md'],
-  ['Д', 'Тесты, дефекты, безопасность, снимки экранов', '04_Проверки/'],
-  ['Е', 'Измерения, журнал обращений', '05_Измерения/'],
-  ['Ж', 'SEO и анонс', '06_SEO_Продвижение/'],
-  ['И', 'Протокол восстановления, дневник, матрица соответствия, инструкция запуска', '07_Документы/, 01_Проект/README.md'],
-], [16, 46, 38]);
+TOPIC('Список использованных источников.');
+[['Node.js Documentation: SQLite (node:sqlite)', 'https://nodejs.org/docs/latest/api/sqlite.html', 'на английском языке'],
+  ['Node.js Documentation: Crypto (scrypt, timingSafeEqual)', 'https://nodejs.org/docs/latest/api/crypto.html', 'на английском языке'],
+  ['SQLite Documentation: CREATE TRIGGER', 'https://www.sqlite.org/lang_createtrigger.html', 'на английском языке'],
+  ['SQLite Documentation: Partial Indexes', 'https://www.sqlite.org/partialindex.html', 'на английском языке'],
+  ['MDN Web Docs: HTTP-куки', 'https://developer.mozilla.org/ru/docs/Web/HTTP/Guides/Cookies', 'на русском языке'],
+  ['MDN Web Docs: Content-Security-Policy', 'https://developer.mozilla.org/ru/docs/Web/HTTP/Guides/CSP', 'на русском языке'],
+  ['Unsplash License (источник фотографий)', 'https://unsplash.com/license', 'на английском языке'],
+].forEach(([t, u, l], i) => P(`${i + 1}. ${t} [Электронный ресурс]. – URL: ${u} (${l}).`));
+P('Профессиональные термины: транзакция, триггер, состояние гонки, CSRF, частичный уникальный индекс.', { before: 120 });
 
 // ── Протокол тестирования (md) ──────────────────────────────────────────────
 const md = ['# Протокол функционального тестирования', '', '**Проект и версия:** ОРБИТА 1.0. **Исполнитель:** Сидоров Е. Д., 4ИСИП-723. **Среда и дата:** Windows 10 Pro 19045, Node.js ' + tests.node + ', SQLite 3.53, 07.11.2026; запуск `npm test` (HTTP + прямые проверки БД на временной БД).', '',
@@ -369,85 +357,137 @@ fs.writeFileSync(path.join(ROOT, '04_Проверки', 'Протокол_тес
 const num = (kind, key) => { const f = B.find((b) => (kind === 'T' && b.k === 'table' && b.caption.startsWith(key)) || (kind === 'L' && b.k === 'code' && b.caption.startsWith(key)) || (kind === 'F' && b.k === 'img' && b.file.startsWith(key))); if (!f) throw new Error('нет ссылки ' + kind + ':' + key); return '№' + f.n; };
 const RES = (t) => String(t).replace(/\{\{([TLF]):([^}]+)\}\}/g, (_, k, key) => num(k, key));
 for (const b of B) if (b.k === 'p') b.t = RES(b.t);
-// ── Рендер: DOCX ────────────────────────────────────────────────────────────
+
+// ── Оформление по образцу (пример.docx): Times New Roman 14, поля 3/1,5/2/2 см, Heading 1 — 16 pt ──
 const FONT = 'Times New Roman';
-const run = (t, o = {}) => new TextRun({ text: t, font: FONT, size: o.size ?? 28, bold: o.bold, italics: o.italics });
-const cm = (v) => Math.round(v * 567);
+const TW = 9695; // ширина таблиц, dxa
 const resolveShot = (f) => (fs.existsSync(path.join(SHOTS, f)) ? f : f.replace('__экран', ''));
 const png = (f) => { const b = fs.readFileSync(path.join(SHOTS, resolveShot(f))); return { w: b.readUInt32BE(16), h: b.readUInt32BE(20), data: b }; };
-const NB = { style: BorderStyle.SINGLE, size: 4, color: '000000' };
+const r = (t, o = {}) => new TextRun({ text: t, font: o.font, size: o.size, bold: o.bold, break: o.br });
+const LINE15 = { line: 360, lineRule: 'auto', after: 0 };
+const NB = { style: BorderStyle.SINGLE, size: 4, color: 'auto' };
 const borders = { top: NB, bottom: NB, left: NB, right: NB };
-const body = (t, o = {}) => new Paragraph({ children: [run(t, o)], alignment: o.center ? AlignmentType.CENTER : AlignmentType.JUSTIFIED, spacing: { line: 360, after: 0 }, indent: o.noindent || o.center ? undefined : { firstLine: cm(1.25) }, keepNext: o.keepNext });
-const cap = (t, o = {}) => new Paragraph({ children: [run(t, { size: 28, ...o })], spacing: { line: 360, before: o.before ?? 120, after: o.after ?? 120 }, alignment: o.center ? AlignmentType.CENTER : AlignmentType.LEFT, keepNext: o.keepNext });
-const cell = (t, w, o = {}) => new TableCell({
-  width: { size: w, type: WidthType.PERCENTAGE }, borders, verticalAlign: VerticalAlign.CENTER,
-  shading: o.head ? { type: ShadingType.CLEAR, fill: 'EDEDED' } : undefined, margins: { top: 40, bottom: 40, left: 80, right: 80 },
-  children: String(t).split('\n').map((ln) => new Paragraph({ children: [run(ln, { size: 22, bold: o.head })], spacing: { line: 240 }, alignment: o.head ? AlignmentType.CENTER : AlignmentType.LEFT })),
+const para = (children, o = {}) => new Paragraph({ children, alignment: o.jc, spacing: o.spacing ?? LINE15, indent: o.indent, keepNext: o.keepNext, pageBreakBefore: o.pbb });
+const first = (t, o = {}) => para([r(t, o)], { ...o, indent: { firstLine: 709 } });
+const cellText = (t) => (String(t).length <= 10 ? AlignmentType.CENTER : AlignmentType.LEFT);
+const mkCell = (t, wDxa, head) => new TableCell({
+  width: { size: wDxa, type: WidthType.DXA }, borders, verticalAlign: VerticalAlign.CENTER,
+  children: String(t).split('\n').map((ln) => new Paragraph({ children: [new TextRun({ text: ln, size: 22, bold: head })], keepNext: true, spacing: { line: 276, lineRule: 'auto', after: 0 }, indent: { firstLine: 0 }, alignment: head ? AlignmentType.CENTER : cellText(ln) })),
 });
-const docChildren = [];
+const px = (v) => Math.round(v * 37.795);
+const empty = (after = 120) => new Paragraph({ children: [], spacing: { line: 240, lineRule: 'auto', after } });
+const kids = [];
+
 for (const b of B) {
   if (b.k === 'title') {
-    const c = (t, o = {}) => docChildren.push(new Paragraph({ children: [run(t, o)], alignment: AlignmentType.CENTER, spacing: { after: o.after ?? 60 } }));
-    c('Федеральное государственное образовательное бюджетное'); c('учреждение высшего образования'); c('«Финансовый университет при Правительстве Российской Федерации»'); c('(Финансовый университет)', { after: 200 });
-    c('Колледж информатики и программирования', { bold: true, after: 700 });
-    c('ОТЧЁТ', { bold: true, size: 36, after: 120 }); c('По учебной практике', { after: 120 });
-    c('Тема: «Мероприятия» (вариант 6)', { bold: true, after: 300 });
-    c('Специальность 09.02.07 Информационные системы и программирование'); c('(квалификация: Разработчик веб и мультимедийных приложений)', { after: 120 });
-    c('Профессиональный модуль ПМ.09 Проектирование, разработка и оптимизация веб-приложений', { after: 120 });
-    c('Междисциплинарный курс УП.09.01 Учебная практика', { after: 700 });
-    const left = (t, o = {}) => docChildren.push(new Paragraph({ children: [run(t, o)], spacing: { after: 80 }, indent: { left: cm(7) } }));
-    left('Выполнил:', { bold: true }); left('Студент 4 курса 4ИСИП-723 учебной группы'); left('_______________  Е.Д. Сидоров', { }); left('(подпись)                (инициалы, фамилия)', { size: 20 });
-    left('');
-    left('Проверил:', { bold: true }); left('Руководитель практики от Колледжа информатики и программирования'); left('Преподаватель  _______________  ________________');
-    docChildren.push(new Paragraph({ children: [run('Москва, 2026', {})], alignment: AlignmentType.CENTER, spacing: { before: 900 } }), new Paragraph({ children: [new PageBreak()] }));
-  } else if (b.k === 'topic') docChildren.push(new Paragraph({ children: [new PageBreak()] }), cap(b.t, { bold: true, keepNext: true, before: 0 }));
-  else if (b.k === 'h') docChildren.push(cap(b.t, { bold: true, keepNext: true, before: 200 }));
+    const C = (t, o = {}) => kids.push(para([r(t, { bold: o.bold, size: o.size })], { jc: AlignmentType.CENTER, spacing: { line: 240, after: 0 } }));
+    const L = (t, o = {}) => kids.push(para([r(t, { size: o.size })], { jc: AlignmentType.LEFT, spacing: { line: 240, after: 0 }, indent: o.left ? { left: 3544 } : undefined }));
+    C('Федеральное государственное образовательное бюджетное', { bold: true }); C('учреждение высшего образования', { bold: true });
+    C('«Финансовый университет при Правительстве Российской Федерации»', { bold: true }); C('(Финансовый университет)', { bold: true });
+    C(''); C('Колледж информатики и программирования'); C(''); C(''); C('ОТЧЁТ'); C(''); C('По учебной практике'); C('');
+    L('Специальность  09.02.07 Информационные системы и программирование (квалификация: Разработчик веб и мультимедийных приложений)');
+    L('                                              (код)                                            (наименование)', { size: 22 });
+    L('Профессиональный модуль ПМ.09 Проектирование, разработка и оптимизация веб-приложений', { size: 23 });
+    L('                                                             (код)                             (наименование)', { size: 22 });
+    L(''); L('Междисциплинарный курс УП.09.01                Учебная практика', { size: 23 });
+    L('                                                            (код)                             (наименование)', { size: 22 });
+    L(''); L(''); L('');
+    L('Выполнил:', { left: true }); L('Студент 4 курса 4ИСИП-723 учебной группы', { left: true }); L('   (номер)       (номер)', { left: true, size: 22 });
+    L('', { left: true }); L('', { left: true });
+    L('                          Е.Д.Сидоров', { left: true }); L('       (подпись)                        (инициалы, фамилия)', { left: true, size: 22 });
+    L('', { left: true }); L('', { left: true });
+    L('Проверил:', { left: true }); L('Руководитель практики от', { left: true }); L('Колледжа информатики и программирования', { left: true }); L('', { left: true });
+    L('Преподаватель                       _______________ (квалификационная                    (инициалы, фамилия)', { left: true, size: 22 }); L('категория, звание, должность)', { left: true, size: 22 });
+    kids.push(new Paragraph({ children: [new PageBreak()] }));
+  } else if (b.k === 'h0') kids.push(para([r(b.t, { bold: true })], { jc: AlignmentType.CENTER }));
+  else if (b.k === 'topic') kids.push(new Paragraph({ heading: HeadingLevel.HEADING_1, pageBreakBefore: true, children: [new TextRun({ text: b.t })] }));
+  else if (b.k === 'h') kids.push(first(b.t.endsWith(':') ? b.t : b.t + ':', { keepNext: true }));
   else if (b.k === 'p') {
-    if (b.label) docChildren.push(new Paragraph({ children: [run(b.label + ' ', { bold: true }), run(b.t)], alignment: AlignmentType.JUSTIFIED, spacing: { line: 360 }, indent: { firstLine: cm(1.25) } }));
-    else docChildren.push(body(b.t, { bold: b.bold, noindent: b.noindent }));
+    if (b.label) kids.push(para([r(b.label, { bold: true }), r(' ' + b.t)], { indent: { firstLine: 709 } }));
+    else if (b.t === 'Ход работы:') kids.push(first(b.t, { bold: true }));
+    else if (b.t.startsWith('Вывод:')) kids.push(para([r('Вывод:', { bold: true }), r(b.t.slice(6))], { indent: { firstLine: 709 }, spacing: { ...LINE15, before: 240 } }));
+    else kids.push(para([r(b.t)], { indent: b.noindent ? undefined : { firstLine: 709 }, spacing: b.before ? { ...LINE15, before: b.before } : LINE15 }));
   } else if (b.k === 'table') {
-    docChildren.push(cap(`Таблица №${b.n} – ${b.caption}`, { keepNext: true }));
-    const tot = b.widths.reduce((a, c) => a + c, 0);
-    docChildren.push(new Table({ width: { size: 100, type: WidthType.PERCENTAGE }, rows: [
-      new TableRow({ tableHeader: true, cantSplit: true, children: b.head.map((h, i) => cell(h, (b.widths[i] / tot) * 100, { head: true })) }),
-      ...b.rows.map((r) => new TableRow({ cantSplit: true, children: r.map((c, i) => cell(c, (b.widths[i] / tot) * 100)) })),
+    kids.push(para([r(`Таблица №${b.n} – ${b.caption}`)], { keepNext: true, spacing: { ...LINE15, before: 120 } }));
+    const tot = b.widths.reduce((a, c) => a + c, 0); const w = b.widths.map((x) => Math.round((x / tot) * TW));
+    kids.push(new Table({ width: { size: TW, type: WidthType.DXA }, alignment: AlignmentType.CENTER, layout: TableLayoutType.FIXED, columnWidths: w, rows: [
+      new TableRow({ tableHeader: true, children: b.head.map((h, i) => mkCell(h, w[i], true)) }),
+      ...b.rows.map((row) => new TableRow({ cantSplit: true, children: row.map((c, i) => mkCell(c, w[i], false)) })),
     ] }));
-    docChildren.push(new Paragraph({ children: [], spacing: { after: 120 } }));
+    kids.push(empty());
   } else if (b.k === 'img') {
-    const im = png(b.file); const wcm = Math.min(b.maxW, 15.5, (im.w / im.h) * 11); const hcm = wcm * im.h / im.w;
-    docChildren.push(new Paragraph({ children: [new ImageRun({ type: 'png', data: im.data, transformation: { width: Math.round(wcm * 37.8), height: Math.round(hcm * 37.8) } })], alignment: AlignmentType.CENTER, keepNext: true, spacing: { before: 120 } }));
-    docChildren.push(cap(`Рисунок №${b.n} – ${b.caption}`, { center: true }));
+    const im = png(b.file); let wcm = Math.min(b.maxW, 15.5); let hcm = (wcm * im.h) / im.w; if (hcm > 19) { hcm = 19; wcm = (hcm * im.w) / im.h; }
+    kids.push(new Paragraph({ keepNext: true, alignment: AlignmentType.CENTER, spacing: { line: 240, lineRule: 'auto', before: 120, after: 80 }, children: [new ImageRun({ type: 'png', data: im.data, transformation: { width: px(wcm), height: px(hcm) } })] }));
+    kids.push(para([r(`Рисунок №${b.n} – ${b.caption}`)], { jc: AlignmentType.CENTER, spacing: { line: 360, lineRule: 'auto', after: 160 } }));
   } else if (b.k === 'code') {
-    docChildren.push(cap(`Листинг №${b.n} – ${b.caption}`, { keepNext: true }));
-    docChildren.push(new Table({ width: { size: 100, type: WidthType.PERCENTAGE }, rows: [new TableRow({ children: [new TableCell({ width: { size: 100, type: WidthType.PERCENTAGE }, borders, shading: { type: ShadingType.CLEAR, fill: 'F5F5F5' }, margins: { top: 60, bottom: 60, left: 100, right: 100 },
-      children: b.text.split('\n').map((ln) => new Paragraph({ children: [new TextRun({ text: ln.replace(/\t/g, '  ') || ' ', font: 'Consolas', size: 18 })], spacing: { line: 220 } })) })] })] }));
-    docChildren.push(new Paragraph({ children: [], spacing: { after: 120 } }));
+    kids.push(para([r(`Листинг №${b.n} – ${b.caption}`)], { jc: AlignmentType.LEFT, keepNext: true, spacing: { ...LINE15, before: 120 } }));
+    const lines = b.text.split('\n');
+    kids.push(new Paragraph({
+      alignment: AlignmentType.LEFT, spacing: { line: 240, lineRule: 'auto', after: 0 }, indent: { firstLine: 0 },
+      border: { top: { style: BorderStyle.SINGLE, size: 4, space: 1, color: 'auto' }, bottom: { style: BorderStyle.SINGLE, size: 4, space: 1, color: 'auto' }, left: { style: BorderStyle.SINGLE, size: 4, space: 4, color: 'auto' }, right: { style: BorderStyle.SINGLE, size: 4, space: 4, color: 'auto' } },
+      shading: { type: ShadingType.CLEAR, fill: 'F6F7F7', color: 'auto' },
+      children: lines.map((ln, i) => new TextRun({ text: ln.replace(/\t/g, '  '), font: 'Courier New', size: 20, break: i ? 1 : undefined })),
+    }));
+    kids.push(empty());
   }
 }
+
+const centerPara = (children) => new Paragraph({ alignment: AlignmentType.CENTER, children });
 const doc = new Document({
   creator: 'Сидоров Е.Д.', title: 'Отчёт по учебной практике УП.09.01. Мероприятия',
-  sections: [{ properties: { page: { margin: { top: cm(2), bottom: cm(2), left: cm(3), right: cm(1.5) } } },
-    footers: { default: new Footer({ children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ children: [PageNumber.CURRENT], font: FONT, size: 24 })] })] }) }, children: docChildren }],
+  styles: {
+    default: { document: { run: { font: { ascii: FONT, hAnsi: FONT, cs: FONT, eastAsia: FONT }, size: 28 }, paragraph: { alignment: AlignmentType.JUSTIFIED, spacing: { after: 0, line: 240, lineRule: 'auto' } } } },
+    paragraphStyles: [{ id: 'Heading1', name: 'heading 1', basedOn: 'Normal', next: 'Normal', quickFormat: true,
+      run: { bold: true, size: 32, color: '000000', font: FONT }, paragraph: { alignment: AlignmentType.CENTER, keepNext: true, keepLines: true, spacing: { line: 360, lineRule: 'auto', after: 0 }, outlineLevel: 0 } }],
+  },
+  sections: [{
+    properties: { titlePage: true, page: { size: { width: 11906, height: 16838 }, margin: { top: 1134, bottom: 1134, left: 1701, right: 850, header: 708, footer: 708 } } },
+    footers: {
+      first: new Footer({ children: [centerPara([new TextRun({ text: 'Москва 2026' })])] }),
+      default: new Footer({ children: [centerPara([new TextRun({ children: [PageNumber.CURRENT] })])] }),
+    },
+    children: kids,
+  }],
 });
 const out = path.join(ROOT, '07_Документы');
 fs.writeFileSync(path.join(out, 'Отчёт_УП09_Сидоров_Мероприятия.docx'), await Packer.toBuffer(doc));
 
-// ── Рендер: HTML → PDF ──────────────────────────────────────────────────────
+// ── PDF: тот же текст, те же размеры; страница A4, поля 20/15/20/30 мм ───────────
 const e = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const nbsp = (s) => e(s).replace(/ /g, '&nbsp;');
 let h = `<!doctype html><meta charset="utf-8"><style>
-@page{size:A4;margin:20mm 15mm 20mm 30mm}body{font:14pt/1.5 "Times New Roman",serif;margin:0}
-p{text-align:justify;text-indent:1.25cm;margin:0}p.ni{text-indent:0}.c{text-align:center}
-.cap{margin:6pt 0;break-after:avoid}.cap.f{text-align:center;break-after:auto}h2{font-size:14pt;margin:10pt 0 4pt;break-after:avoid}h1{font-size:14pt;margin:0 0 6pt;break-before:page;break-after:avoid}
-table{border-collapse:collapse;width:100%;font-size:11pt;line-height:1.15;margin-bottom:8pt}td,th{border:1px solid #000;padding:2pt 4pt;vertical-align:middle;text-align:left}th{background:#ededed;text-align:center}tr{break-inside:avoid}
-pre{border:1px solid #000;background:#f5f5f5;padding:4pt 6pt;font:9pt/1.15 Consolas,monospace;white-space:pre-wrap;margin:0 0 8pt}img{display:block;margin:6pt auto 0;max-height:11cm}.t{text-align:center}.l{margin-left:7cm}</style><body>`;
+@page{size:A4;margin:20mm 15mm 20mm 30mm;@bottom-center{content:counter(page);font:14pt "Times New Roman"}}
+@page :first{@bottom-center{content:"Москва 2026";font:14pt "Times New Roman"}}
+body{font:14pt/1.15 "Times New Roman",serif;margin:0;text-align:justify}
+p{margin:0;line-height:1.5}p.f{text-indent:1.25cm}p.c{text-align:center;line-height:1.15}p.s{line-height:1.15;text-align:left;margin:0}
+h1{font:bold 16pt/1.5 "Times New Roman";text-align:center;margin:0;break-before:page;break-after:avoid}
+.cap{margin-top:6pt;break-after:avoid}.fig{text-align:center;margin:6pt 0 4pt;line-height:1.15;break-inside:avoid;break-after:avoid}.figc{text-align:center;margin-bottom:8pt;line-height:1.5}
+table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:11pt;line-height:1.2}td,th{border:1px solid #000;padding:1pt 5pt;vertical-align:middle;text-align:left}th{text-align:center;font-weight:bold}td.m{text-align:center}tr{break-inside:avoid}thead{display:table-header-group}
+.gap{height:6pt}pre{font:10pt/1.15 "Courier New",monospace;border:1px solid #000;background:#f6f7f7;padding:2pt 4pt;white-space:pre-wrap;margin:0;text-align:left}img{max-height:19cm}.l{margin-left:6.25cm}</style><body>`;
+const tl = (t, o = {}) => `<p class="s" style="white-space:pre-wrap;${o.size ? `font-size:${o.size}pt;` : ''}${o.b ? 'font-weight:bold;' : ''}${o.c ? 'text-align:center;' : ''}">${e(t) || '&nbsp;'}</p>`;
 for (const b of B) {
-  if (b.k === 'title') h += `<div class="t" style="break-after:page"><p class="c ni">Федеральное государственное образовательное бюджетное<br>учреждение высшего образования<br>«Финансовый университет при Правительстве Российской Федерации»<br>(Финансовый университет)</p><p class="c ni"><br><b>Колледж информатики и программирования</b></p><br><br><p class="c ni"><b style="font-size:18pt">ОТЧЁТ</b><br>По учебной практике</p><p class="c ni"><b>Тема: «Мероприятия» (вариант 6)</b></p><p class="c ni">Специальность 09.02.07 Информационные системы и программирование<br>(квалификация: Разработчик веб и мультимедийных приложений)<br>Профессиональный модуль ПМ.09 Проектирование, разработка и оптимизация веб-приложений<br>Междисциплинарный курс УП.09.01 Учебная практика</p><br><br><div class="l"><p class="ni"><b>Выполнил:</b><br>Студент 4 курса 4ИСИП-723 учебной группы<br>_______________ Е.Д. Сидоров<br><small>(подпись) (инициалы, фамилия)</small></p><br><p class="ni"><b>Проверил:</b><br>Руководитель практики от Колледжа информатики и программирования<br>Преподаватель _______________ ________________</p></div><br><br><p class="c ni">Москва, 2026</p></div>`;
+  if (b.k === 'title') {
+    h += '<div style="break-after:page">';
+    ['Федеральное государственное образовательное бюджетное', 'учреждение высшего образования', '«Финансовый университет при Правительстве Российской Федерации»', '(Финансовый университет)'].forEach((t) => { h += tl(t, { b: 1, c: 1 }); });
+    h += tl('', {}) + tl('Колледж информатики и программирования', { c: 1 }) + tl('') + tl('') + tl('ОТЧЁТ', { c: 1 }) + tl('') + tl('По учебной практике', { c: 1 }) + tl('');
+    h += tl('Специальность  09.02.07 Информационные системы и программирование (квалификация: Разработчик веб и мультимедийных приложений)');
+    h += tl('(код)                                            (наименование)', { size: 11 }) + tl('Профессиональный модуль ПМ.09 Проектирование, разработка и оптимизация веб-приложений', { size: 11.5 }) + tl('(код)                             (наименование)', { size: 11 });
+    h += tl('') + tl('Междисциплинарный курс УП.09.01                Учебная практика', { size: 11.5 }) + tl('(код)                             (наименование)', { size: 11 }) + tl('') + tl('') + tl('');
+    h += '<div class="l">' + tl('Выполнил:') + tl('Студент 4 курса 4ИСИП-723 учебной группы') + tl('   (номер)       (номер)', { size: 11 }) + tl('') + tl('') + tl('                          Е.Д.Сидоров') + tl('(подпись)                        (инициалы, фамилия)', { size: 11 }) + tl('') + tl('') + tl('Проверил:') + tl('Руководитель практики от') + tl('Колледжа информатики и программирования') + tl('') + tl('Преподаватель                  _______________ (квалификационная', { size: 11 }) + tl('категория, звание, должность)', { size: 11 }) + '</div></div>';
+  } else if (b.k === 'h0') h += `<p class="c" style="font-weight:bold;line-height:1.5">${e(b.t)}</p>`;
   else if (b.k === 'topic') h += `<h1>${e(b.t)}</h1>`;
-  else if (b.k === 'h') h += `<h2>${e(b.t)}</h2>`;
-  else if (b.k === 'p') h += `<p class="${b.noindent ? 'ni' : ''}">${b.label ? `<b>${e(b.label)}</b> ` : ''}${b.bold ? `<b>${e(b.t)}</b>` : e(b.t)}</p>`;
-  else if (b.k === 'table') h += `<p class="cap ni">Таблица №${b.n} – ${e(b.caption)}</p><table><colgroup>${b.widths.map((w) => `<col style="width:${w}%">`).join('')}</colgroup><thead><tr>${b.head.map((x) => `<th>${e(x)}</th>`).join('')}</tr></thead><tbody>${b.rows.map((r) => `<tr>${r.map((c) => `<td>${e(c).replace(/\n/g, '<br>')}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
-  else if (b.k === 'img') h += `<img src="file:///${path.join(SHOTS, resolveShot(b.file)).replace(/\\/g, '/')}" style="max-width:${b.maxW}cm"><p class="cap f ni">Рисунок №${b.n} – ${e(b.caption)}</p>`;
-  else if (b.k === 'code') h += `<p class="cap ni">Листинг №${b.n} – ${e(b.caption)}</p><pre>${e(b.text)}</pre>`;
+  else if (b.k === 'h') h += `<p class="f" style="break-after:avoid">${e(b.t.endsWith(':') ? b.t : b.t + ':')}</p>`;
+  else if (b.k === 'p') {
+    if (b.label) h += `<p class="f"><b>${e(b.label)}</b> ${e(b.t)}</p>`;
+    else if (b.t === 'Ход работы:') h += `<p class="f"><b>${e(b.t)}</b></p>`;
+    else if (b.t.startsWith('Вывод:')) h += `<p class="f" style="margin-top:12pt"><b>Вывод:</b>${e(b.t.slice(6))}</p>`;
+    else h += `<p class="${b.noindent ? '' : 'f'}" ${b.before ? 'style="margin-top:6pt"' : ''}>${e(b.t)}</p>`;
+  } else if (b.k === 'table') {
+    const tot = b.widths.reduce((a, c) => a + c, 0);
+    h += `<p class="cap" style="text-align:left;margin-top:6pt">Таблица №${b.n} – ${e(b.caption)}</p><table><colgroup>${b.widths.map((w) => `<col style="width:${(w / tot) * 100}%">`).join('')}</colgroup><thead><tr>${b.head.map((x) => `<th>${e(x)}</th>`).join('')}</tr></thead><tbody>${b.rows.map((row) => `<tr>${row.map((c) => `<td${String(c).length <= 10 ? ' class="m"' : ''}>${e(c).replace(/\n/g, '<br>')}</td>`).join('')}</tr>`).join('')}</tbody></table><div class="gap"></div>`;
+  } else if (b.k === 'img') {
+    h += `<div class="fig"><img src="file:///${path.join(SHOTS, resolveShot(b.file)).replace(/\\/g, '/')}" style="max-width:${Math.min(b.maxW, 15.5)}cm"></div><p class="figc">Рисунок №${b.n} – ${e(b.caption)}</p>`;
+  } else if (b.k === 'code') h += `<p class="cap" style="text-align:left;margin-top:6pt">Листинг №${b.n} – ${e(b.caption)}</p><pre>${e(b.text)}</pre><div class="gap"></div>`;
 }
 const htmlFile = path.join(out, '_отчёт.html');
 fs.writeFileSync(htmlFile, h);
@@ -455,14 +495,10 @@ const br = await chromium.launch({ executablePath: 'C:\\Program Files (x86)\\Mic
 const pg = await br.newPage();
 await pg.goto('file:///' + htmlFile.replace(/\\/g, '/'));
 await pg.waitForTimeout(800);
-await pg.pdf({ path: path.join(out, 'Отчёт_УП09_Сидоров_Мероприятия.pdf'), format: 'A4', printBackground: true, displayHeaderFooter: true,
-  headerTemplate: '<span></span>', footerTemplate: '<div style="font:11px Times New Roman;width:100%;text-align:center"><span class="pageNumber"></span></div>', margin: { top: '20mm', bottom: '20mm', left: '30mm', right: '15mm' } });
+await pg.pdf({ path: path.join(out, 'Отчёт_УП09_Сидоров_Мероприятия.pdf'), format: 'A4', printBackground: true, preferCSSPageSize: true });
 await br.close();
 if (!process.env.KEEP) fs.rmSync(htmlFile);
 console.log(`Отчёт собран: таблиц ${nT}, рисунков ${nF}, листингов ${nL}`);
-
-
-if (process.env.MAP) for (const b of B) if (b.n) console.log((b.k === 'table' ? 'Т' : b.k === 'img' ? 'Р' : 'Л') + b.n + ' ' + b.caption.slice(0, 60));
 
 
 
