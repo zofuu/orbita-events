@@ -369,11 +369,12 @@ const NB = { style: BorderStyle.SINGLE, size: 4, color: 'auto' };
 const borders = { top: NB, bottom: NB, left: NB, right: NB };
 const para = (children, o = {}) => new Paragraph({ children, alignment: o.jc, spacing: o.spacing ?? LINE15, indent: o.indent, keepNext: o.keepNext, pageBreakBefore: o.pbb });
 const first = (t, o = {}) => para([r(t, o)], { ...o, indent: { firstLine: 709 } });
-const cellText = (t) => (String(t).length <= 10 ? AlignmentType.CENTER : AlignmentType.LEFT);
-const mkCell = (t, wDxa, head) => new TableCell({
-  width: { size: wDxa, type: WidthType.DXA }, borders, verticalAlign: VerticalAlign.CENTER,
-  children: String(t).split('\n').map((ln) => new Paragraph({ children: [new TextRun({ text: ln, size: 22, bold: head })], keepNext: true, spacing: { line: 276, lineRule: 'auto', after: 0 }, indent: { firstLine: 0 }, alignment: head ? AlignmentType.CENTER : cellText(ln) })),
+
+const mkCell = (t, wDxa, head, ctr) => new TableCell({
+  width: { size: wDxa, type: WidthType.DXA }, borders, verticalAlign: VerticalAlign.CENTER, shading: { type: ShadingType.CLEAR, fill: 'FFFFFF', color: 'auto' },
+  children: String(t).split('\n').map((ln) => new Paragraph({ children: [new TextRun({ text: ln, size: 22, bold: head })], keepNext: true, spacing: { line: 276, lineRule: 'auto', after: 0 }, indent: { firstLine: 0 }, alignment: head || ctr ? AlignmentType.CENTER : AlignmentType.LEFT })),
 });
+const ctrCols = (b) => b.head.map((_, i) => b.rows.every((rw) => String(rw[i]).length <= 14)); // короткие значения колонки — по центру
 const px = (v) => Math.round(v * 37.795);
 const empty = (after = 120) => new Paragraph({ children: [], spacing: { line: 240, lineRule: 'auto', after } });
 const kids = [];
@@ -411,8 +412,8 @@ for (const b of B) {
     kids.push(para([r(`Таблица №${b.n} – ${b.caption}`)], { keepNext: true, spacing: { ...LINE15, before: 120 } }));
     const tot = b.widths.reduce((a, c) => a + c, 0); const w = b.widths.map((x) => Math.round((x / tot) * TW));
     kids.push(new Table({ width: { size: TW, type: WidthType.DXA }, alignment: AlignmentType.CENTER, layout: TableLayoutType.FIXED, columnWidths: w, rows: [
-      new TableRow({ tableHeader: true, children: b.head.map((h, i) => mkCell(h, w[i], true)) }),
-      ...b.rows.map((row) => new TableRow({ cantSplit: true, children: row.map((c, i) => mkCell(c, w[i], false)) })),
+      new TableRow({ tableHeader: true, children: b.head.map((h, i) => mkCell(h, w[i], true, true)) }),
+      ...b.rows.map((row) => new TableRow({ cantSplit: true, children: row.map((c, i) => mkCell(c, w[i], false, ctrCols(b)[i])) })),
     ] }));
     kids.push(empty());
   } else if (b.k === 'img') {
@@ -484,7 +485,7 @@ for (const b of B) {
     else h += `<p class="${b.noindent ? '' : 'f'}" ${b.before ? 'style="margin-top:6pt"' : ''}>${e(b.t)}</p>`;
   } else if (b.k === 'table') {
     const tot = b.widths.reduce((a, c) => a + c, 0);
-    h += `<p class="cap" style="text-align:left;margin-top:6pt">Таблица №${b.n} – ${e(b.caption)}</p><table><colgroup>${b.widths.map((w) => `<col style="width:${(w / tot) * 100}%">`).join('')}</colgroup><thead><tr>${b.head.map((x) => `<th>${e(x)}</th>`).join('')}</tr></thead><tbody>${b.rows.map((row) => `<tr>${row.map((c) => `<td${String(c).length <= 10 ? ' class="m"' : ''}>${e(c).replace(/\n/g, '<br>')}</td>`).join('')}</tr>`).join('')}</tbody></table><div class="gap"></div>`;
+    h += `<p class="cap" style="text-align:left;margin-top:6pt">Таблица №${b.n} – ${e(b.caption)}</p><table><colgroup>${b.widths.map((w) => `<col style="width:${(w / tot) * 100}%">`).join('')}</colgroup><thead><tr>${b.head.map((x) => `<th>${e(x)}</th>`).join('')}</tr></thead><tbody>${b.rows.map((row) => `<tr>${row.map((c, ci) => `<td${ctrCols(b)[ci] ? ' class="m"' : ''}>${e(c).replace(/\n/g, '<br>')}</td>`).join('')}</tr>`).join('')}</tbody></table><div class="gap"></div>`;
   } else if (b.k === 'img') {
     h += `<div class="fig"><img src="file:///${path.join(SHOTS, resolveShot(b.file)).replace(/\\/g, '/')}" style="max-width:${Math.min(b.maxW, 15.5)}cm"></div><p class="figc">Рисунок №${b.n} – ${e(b.caption)}</p>`;
   } else if (b.k === 'code') h += `<p class="cap" style="text-align:left;margin-top:6pt">Листинг №${b.n} – ${e(b.caption)}</p><pre>${e(b.text)}</pre><div class="gap"></div>`;
@@ -499,6 +500,7 @@ await pg.pdf({ path: path.join(out, 'Отчёт_УП09_Сидоров_Мероп
 await br.close();
 if (!process.env.KEEP) fs.rmSync(htmlFile);
 console.log(`Отчёт собран: таблиц ${nT}, рисунков ${nF}, листингов ${nL}`);
+
 
 
 
