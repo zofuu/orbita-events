@@ -1,0 +1,12 @@
+{
+  "file": "orbita-2026-11-07-18-48-17.db",
+  "created": "2026-11-07T18:48:17.549Z",
+  "tables": {
+    "users": 26,
+    "categories": 6,
+    "events": 63,
+    "registrations": 727,
+    "messages": 0
+  },
+  "sizeBytes": 249856
+}

@@ -1,0 +1,87 @@
+{
+  "env": {
+    "node": "v24.19.0",
+    "os": "Windows_NT 10.0.19045",
+    "cpu": "Intel(R) Core(TM) i5-9400F CPU @ 2.90GHz",
+    "date": "2026-11-07T18:47:43.978Z"
+  },
+  "rows": [
+    {
+      "measure": "Индексы",
+      "name": "До: без индексов",
+      "runs": [
+        15.19,
+        15.67,
+        15.66
+      ],
+      "median": 15.66,
+      "queries": 4,
+      "bytes": 3367
+    },
+    {
+      "measure": "Индексы",
+      "name": "После: с индексами",
+      "runs": [
+        14.58,
+        14.11,
+        15.6
+      ],
+      "median": 14.58,
+      "queries": 4,
+      "bytes": 3367
+    },
+    {
+      "measure": "Сжатие",
+      "name": "До: без Accept-Encoding",
+      "runs": [
+        16,
+        15.83,
+        14.29
+      ],
+      "median": 15.83,
+      "queries": 4,
+      "bytes": 15971
+    },
+    {
+      "measure": "Сжатие",
+      "name": "После: gzip",
+      "runs": [
+        15.35,
+        15.86,
+        15.83
+      ],
+      "median": 15.83,
+      "queries": 4,
+      "bytes": 3367
+    },
+    {
+      "measure": "N+1",
+      "name": "До: 1 + 9 запросов к БД",
+      "runs": [
+        0.1,
+        0.1,
+        0.1
+      ],
+      "median": 0.1,
+      "queries": 10,
+      "bytes": 0
+    },
+    {
+      "measure": "N+1",
+      "name": "После: 1 запрос к БД",
+      "runs": [
+        0.05,
+        0.05,
+        0.05
+      ],
+      "median": 0.05,
+      "queries": 1,
+      "bytes": 0
+    }
+  ],
+  "data": {
+    "events": 2963,
+    "note": "размер БД, КБ: A=2580, B=4016",
+    "registrations": 31433
+  }
+}

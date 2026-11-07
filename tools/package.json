@@ -1,0 +1,1 @@
+{"name":"orbita-tools","private":true,"type":"module","dependencies":{"docx":"^9.15.3","playwright-core":"^1.65.0"}}

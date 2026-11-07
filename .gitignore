@@ -1,0 +1,6 @@
+﻿tools/node_modules/
+01_Проект/data/
+01_Проект/.env
+*.db-wal
+*.db-shm
+02_Данные/резервная_копия/restore-check/

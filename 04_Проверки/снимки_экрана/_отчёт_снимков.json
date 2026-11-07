@@ -1,0 +1,237 @@
+[
+  {
+    "name": "главная_1280",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "главная_полная",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "каталог_1280",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "мероприятие_1280",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "главная_768",
+    "width": 768,
+    "overflow": false
+  },
+  {
+    "name": "каталог_768",
+    "width": 768,
+    "overflow": false
+  },
+  {
+    "name": "мероприятие_768",
+    "width": 768,
+    "overflow": false
+  },
+  {
+    "name": "главная_360",
+    "width": 360,
+    "overflow": false
+  },
+  {
+    "name": "каталог_360",
+    "width": 360,
+    "overflow": false
+  },
+  {
+    "name": "мероприятие_360",
+    "width": 360,
+    "overflow": false
+  },
+  {
+    "name": "каталог_поиск",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "каталог_фильтр_категория",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "каталог_пусто",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "каталог_страница_2",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "категории",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "категория_it",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "о_платформе",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "контакты",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "вход",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "вход_ошибка",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "регистрация_форма",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "регистрация_ошибки",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "ошибка_401",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "страница_404",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "мероприятие_до_регистрации",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "регистрация_успех",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "регистрация_повтор_уведомление",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "регистрация_лимит_достигнут",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "регистрация_лимит_уведомление",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "кабинет",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "мои_регистрации",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "отмена_регистрации",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "история_посещений",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "отменённые_регистрации",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "доступ_запрещён_403",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "мои_регистрации_360",
+    "width": 360,
+    "overflow": false
+  },
+  {
+    "name": "каталог_фильтры_360",
+    "width": 360,
+    "overflow": false
+  },
+  {
+    "name": "панель_организатора",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "создание_мероприятия",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "создание_ошибки_валидации",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "мероприятие_создано_участники",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "редактирование_мероприятия",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "участники_мероприятия",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "доступ_к_чужому_403",
+    "width": 1280,
+    "overflow": false
+  },
+  {
+    "name": "панель_организатора_360",
+    "width": 360,
+    "overflow": false
+  },
+  {
+    "name": "участники_360",
+    "width": 360,
+    "overflow": false
+  },
+  {
+    "name": "админ_статистика",
+    "width": 1280,
+    "overflow": false
+  }
+]

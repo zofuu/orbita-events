@@ -1,0 +1,17 @@
+{
+  "name": "orbita-events",
+  "version": "1.0.0",
+  "description": "ОРБИТА — платформа мероприятий (УП.09.01, тема №6). Сидоров Е. Д., 4ИСИП-723",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22.13" },
+  "scripts": {
+    "start": "node server.js",
+    "db:reset": "node scripts/db.js reset",
+    "db:migrate": "node scripts/db.js migrate",
+    "test": "node scripts/test.js",
+    "bench": "node scripts/bench.js",
+    "backup": "node scripts/backup.js backup",
+    "restore": "node scripts/backup.js restore"
+  }
+}

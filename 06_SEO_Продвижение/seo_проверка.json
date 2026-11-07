@@ -1,0 +1,108 @@
+{
+  "base": "http://localhost:3000",
+  "pages": [
+    {
+      "page": "/",
+      "status": 200,
+      "title": "ОРБИТА — платформа мероприятий: поиск и регистрация на события",
+      "titleLen": 62,
+      "descLen": 148,
+      "h1": 1,
+      "canonical": true,
+      "og": true,
+      "jsonld": false,
+      "images": 7,
+      "imagesWithAlt": 7,
+      "noindex": false
+    },
+    {
+      "page": "/events",
+      "status": 200,
+      "title": "Каталог мероприятий: поиск, фильтры, регистрация — ОРБИТА",
+      "titleLen": 57,
+      "descLen": 138,
+      "h1": 1,
+      "canonical": true,
+      "og": true,
+      "jsonld": false,
+      "images": 9,
+      "imagesWithAlt": 9,
+      "noindex": false
+    },
+    {
+      "page": "/events/3",
+      "status": 200,
+      "title": "Хакатон «Город данных» — 27 ноя, Санкт-Петербург — ОРБИТА",
+      "titleLen": 57,
+      "descLen": 140,
+      "h1": 1,
+      "canonical": true,
+      "og": true,
+      "jsonld": true,
+      "images": 4,
+      "imagesWithAlt": 4,
+      "noindex": false
+    },
+    {
+      "page": "/categories/it",
+      "status": 200,
+      "title": "IT и технологии — мероприятия и регистрация — ОРБИТА",
+      "titleLen": 52,
+      "descLen": 147,
+      "h1": 1,
+      "canonical": true,
+      "og": true,
+      "jsonld": false,
+      "images": 9,
+      "imagesWithAlt": 9,
+      "noindex": false
+    },
+    {
+      "page": "/about",
+      "status": 200,
+      "title": "О платформе ОРБИТА — как работает регистрация на мероприятия",
+      "titleLen": 60,
+      "descLen": 142,
+      "h1": 1,
+      "canonical": true,
+      "og": true,
+      "jsonld": false,
+      "images": 0,
+      "imagesWithAlt": 0,
+      "noindex": false
+    },
+    {
+      "page": "/contacts",
+      "status": 200,
+      "title": "Контакты — связаться с командой ОРБИТА",
+      "titleLen": 38,
+      "descLen": 108,
+      "h1": 1,
+      "canonical": true,
+      "og": true,
+      "jsonld": false,
+      "images": 0,
+      "imagesWithAlt": 0,
+      "noindex": false
+    }
+  ],
+  "privatePages": [
+    {
+      "page": "/account",
+      "noindex": true,
+      "inRobots": true
+    },
+    {
+      "page": "/organizer",
+      "noindex": true,
+      "inRobots": true
+    },
+    {
+      "page": "/login",
+      "noindex": true,
+      "inRobots": true
+    }
+  ],
+  "sitemapUrls": 72,
+  "robotsHasSitemap": true
+}
