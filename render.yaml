@@ -1,0 +1,20 @@
+# Render Blueprint: бесплатный веб-сервис Node.js (учебная демонстрация)
+services:
+  - type: web
+    name: orbita-events
+    runtime: node
+    plan: free
+    buildCommand: echo "no dependencies"
+    startCommand: node 01_Проект/server.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: 24
+      - key: AUTO_SEED
+        value: "1"
+      - key: DEBUG_ERRORS
+        value: "0"
+      - key: SEED_PASSWORD
+        value: Orbita-demo1
+      - key: SITE_URL
+        value: https://orbita-events.onrender.com
